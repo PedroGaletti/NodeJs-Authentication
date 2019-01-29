@@ -73,7 +73,7 @@ app.route('/login')
       .then(user => {
         if (!user)
           return res.redirect('/login');
-        if (!user.validPassword(password))
+        if (!user.validPassword(password, user))
           return res.redirect('/login');
         
         req.session.user = user.dataValues;

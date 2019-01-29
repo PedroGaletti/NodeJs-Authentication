@@ -31,8 +31,8 @@ User.beforeCreate((user) => {
   user.password = bcrypt.hashSync(user.password, salt); 
 });
 
-User.prototype.validPassword = (password) => {
-  return bcrypt.compareSync(password, this.password);
+User.prototype.validPassword = (password, user) => {
+  return bcrypt.compareSync(password, user.password);
 }
 
 db.sync()
